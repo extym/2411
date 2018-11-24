@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="166.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXUI.Controller">
+   <children>
+       <Button fx:id="regButton" layoutX="294.0" layoutY="117.0" mnemonicParsing="false" text="Регистрация" />
+       <Button fx:id="exitButton" layoutX="413.0" layoutY="117.0" mnemonicParsing="false" text="Выход" />
+       <Label layoutX="30.0" layoutY="25.0" prefHeight="17.0" prefWidth="67.0" text="Возраст" />
+       <Label layoutX="30.0" layoutY="75.0" prefHeight="17.0" prefWidth="51.0" text="Логин" />
+       <Label layoutX="30.0" layoutY="121.0" prefHeight="17.0" prefWidth="59.0" text="Пароль" />
+       <TextField fx:id="loginField" layoutX="106.0" layoutY="21.0" />
+       <TextField fx:id="ageField" layoutX="106.0" layoutY="71.0" />
+       <PasswordField fx:id="passField" layoutX="106.0" layoutY="117.0" />
+   </children>
+</AnchorPane>
