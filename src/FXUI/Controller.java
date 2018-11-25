@@ -8,6 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 public class Controller {
 
     private Person pers;
@@ -23,6 +27,25 @@ public class Controller {
         ageField.setText("22");
 
         initAction();
+    }
+
+    @FXML
+
+    private void openFile()throws Exception{
+        File file=new File("PersonTest.txt");
+        if (file.exists()){
+            System.out.println("File"+file.getName()+ "Существует");
+            FileReader fr=new FileReader(file);
+            BufferedReader reader= new BufferedReader(fr);
+            String line;
+            int i;
+            while ((line=reader.readLine()) !=null){
+                System.out.println(line);
+            }
+        }else
+            file.createNewFile();
+
+
     }
 
     @FXML private void closeOperation(){

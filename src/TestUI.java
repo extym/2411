@@ -29,11 +29,11 @@ public class TestUI extends JFrame{
          setSize(w,h);
 
          fieldsPanel.setLayout(new GridLayout(3,2));
-         fieldsPanel.add(label3,0,0);
+         fieldsPanel.add(label1,0,0);
          fieldsPanel.add(ageField,0,1);
          fieldsPanel.add(label2,1,0);
          fieldsPanel.add(passField,1,1);
-         fieldsPanel.add(label1,2,0);
+         fieldsPanel.add(label3,2,0);
          fieldsPanel.add(loginField,2,1);
          buttPanel.add(exitButton);
          buttPanel.add(regButton);
