@@ -10,10 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
     private Person pers;
+    private List<Person> list=new ArrayList<>();
 
     @FXML
     private Button regButton,exitButton;
@@ -31,11 +34,18 @@ public class Controller {
     @FXML
 
     private void openFile(){
+//        try {
+//            serialise();
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+
         FileChooser openFrame=new FileChooser();
         File file=openFrame.showOpenDialog(null);
         try {
-            readFile(file);
-        }catch (IOException e){
+            deserialise(file);
+            //readFile(file);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -86,6 +96,7 @@ public class Controller {
                 int age=Integer.valueOf(ageField.getText());
 
                 pers=new Person(login,pass,age);
+                list.add(pers);
 
                 Alert msg=new Alert(Alert.AlertType.CONFIRMATION, "Персона "+ pers+" Зарегистрирован");
                 msg.showAndWait();
@@ -93,6 +104,23 @@ public class Controller {
         });
     }
 
+    private void  serialise() throws IOException {
+        FileOutputStream fos=new FileOutputStream("testtest.txt");
+        ObjectOutputStream oos=new ObjectOutputStream(fos);
+        oos.writeObject(list);
+        oos.flush();
+        oos.close();
+        fos.close();
+    }
+     private  void  deserialise(File file)throws Exception{
+        FileInputStream fis=new FileInputStream(file);
+        ObjectInputStream ois=new ObjectInputStream(fis);
+        List<Person> personList=(List<Person>) ois.readObject();
+        ois.close();
+        fis.close();
+        for (Person person:personList) {
 
-
+            System.out.println(person);
+        }
+     }
 }

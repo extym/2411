@@ -1,6 +1,8 @@
 package garber.models;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person  implements Serializable {
 
     private String login;
     private String pass;
