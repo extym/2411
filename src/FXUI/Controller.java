@@ -7,10 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 public class Controller {
 
@@ -31,9 +30,21 @@ public class Controller {
 
     @FXML
 
-    private void openFile()throws Exception{
-        File file=new File("PersonTest.txt");
-        if (file.exists()){
+    private void openFile(){
+        FileChooser openFrame=new FileChooser();
+        File file=openFrame.showOpenDialog(null);
+        try {
+            readFile(file);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void readFile(File file)throws IOException{
+        //File file=new File("PersonTest.txt");
+        if (file !=null)
+            if (file.exists()){
             System.out.println("File"+file.getName()+ "Существует");
             FileReader fr=new FileReader(file);
             BufferedReader reader= new BufferedReader(fr);
@@ -42,8 +53,22 @@ public class Controller {
             while ((line=reader.readLine()) !=null){
                 System.out.println(line);
             }
+            fr.close();
+            reader.close();
         }else
-            file.createNewFile();
+            {
+                file.createNewFile();
+                FileWriter fr = new FileWriter(file, false);
+                BufferedWriter writer = new BufferedWriter(fr);
+                writer.write("Hello");
+                writer.newLine();
+                writer.write("xz");
+                writer.newLine();
+                writer.flush();
+                writer.close();
+                fr.close();
+
+            }
 
 
     }
