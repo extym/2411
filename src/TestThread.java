@@ -25,7 +25,7 @@ public class TestThread extends JFrame {
                         SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
                         long startTime = System.currentTimeMillis();
                         long currentTime=0;
-                        while (currentTime<300000
+                        while (currentTime<10000
                         //(!Thread.currentThread().isInterrupted()
                         ) {
                             field.setText(dateFormat.format(System.currentTimeMillis() - startTime)+" "+ Thread.currentThread().getName() );
